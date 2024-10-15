@@ -1,0 +1,34 @@
+{
+  "users": [
+    {{#repeat 5}}
+    {
+      "id": {{@index}},
+      "name": "{{firstName}} {{lastName}}",
+      "link": "{{random 'Famille proche' 'Ami' 'Famille'}}",
+      "status": "{{random 'online' 'offline'}}"
+    }
+    {{/repeat}}
+  ],
+  "chat": [
+    {{#repeat 3}}
+    {
+      "chat_id": {{@index}},
+      "participants": [1, 2],
+      "messages": [
+        {{#repeat min = 2 max = 100}}
+        {
+          "sender_id": 1,
+          "message": "{{lorem min=3 max=20}}",
+          "timestamp": "2024-10-15T14:00:00Z"
+        },
+        {
+          "sender_id": 2,
+          "message": "{{lorem min=3 max=20}}",
+          "timestamp": "2024-10-15T14:01:00Z"
+        }
+        {{/repeat}}
+      ]
+    }
+    {{/repeat}}
+  ]
+}
