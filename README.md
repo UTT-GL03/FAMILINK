@@ -34,16 +34,24 @@ Scénario 1 : "Entamer une conversation"
 ---
 
 1- L'utilisateur se rend sur l'application web
+
 2- L'utilisateur sélectionne un contact ou un groupe de famille
+
 3- Il rédige son message et l'envoie
+
 4- Il répond aux messages de la personne ou du groupe 
 
 Scénario 2 : "Consulter ses messages"
 ---
 
 1- L'utilisateur reçoit une notification de message
+
 2- Il clique sur la notification
+
 3- Il lit le message 
+
 4- Il répond au message ou non
+
 5- Il consulte les messges d'une autre discussion
+
 6- Il répond au message ou non
