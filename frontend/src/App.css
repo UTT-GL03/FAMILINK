@@ -1,42 +1,143 @@
+/* App.css */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  width: 100vw;
+}
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  display: flex;
+}
+.components {
+  display: flex;
+  width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-content {
+  display: flex; /* Permet de disposer la barre latérale et la fenêtre de chat côte à côte */
+  flex-grow: 1; /* Permet à ce conteneur de prendre tout l'espace disponible */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  background-color: #0078d4;
+  color: white;
+  height: 50px;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #f1f1f1;
+  padding: 15px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  padding-top: 70px;
+  margin-bottom: 70px;
 }
 
-.card {
-  padding: 2em;
+.sidebar-title-container {
+  background-color: #e0e0e0; 
+  position: sticky;
+  top: 15px;
+  z-index: 1;
+  margin-bottom: 50px;
+  border-radius: 8px;
 }
 
-.read-the-docs {
-  color: #888;
+.sidebar-title {
+  font-size: 1.5rem;
+  margin: 0; 
+}
+
+.chat-box {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chat-sender {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.chat-message {
+  color: #666;
+}
+.chat-window {
+  flex-grow: 1;
+  height: 100vh;
+  padding: 15px;
+  padding-top: 70px; /* Pour éviter le chevauchement avec le header */
+  overflow-y: hidden; /* Masque le débordement pour ne pas voir les barres de défilement */
+  background-color: #f9f9f9; /* Couleur de fond pour la zone de chat */
+  display: flex;
+  flex-direction: column; /* Permet de disposer les messages et la barre de saisie verticalement */
+}
+
+.message-container {
+  flex-grow: 1; /* Permet à la zone des messages de prendre tout l'espace disponible */
+  overflow-y: auto; /* Ajoute du défilement si nécessaire */
+}
+
+.input-container {
+  position: fixed; /* Fixe la barre de saisie en bas de l'écran */
+  bottom: 0; /* Ancre la barre au bas de la fenêtre */
+  left: 0;
+  right: 0; /* Aligne à droite */
+  padding: 10px; /* Espacement autour de la barre de saisie */
+  background-color: #fff; /* Couleur de fond pour la barre de saisie */
+  border-top: 1px solid #ccc; /* Bordure en haut pour séparer */
+  display: flex; /* Aligne le champ de saisie et le bouton horizontalement */
+}
+
+.input-field {
+  flex-grow: 1; /* Permet au champ de saisie de prendre tout l'espace disponible */
+  padding: 10px; /* Espacement à l'intérieur du champ */
+  border: 1px solid #ccc; /* Bordure autour du champ */
+  border-radius: 4px; /* Coins arrondis */
+  margin-right: 10px; /* Espacement entre le champ et le bouton */
+}
+
+.send-button {
+  padding: 10px 15px; /* Espacement à l'intérieur du bouton */
+  background-color: #007bff; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  border-radius: 4px; /* Coins arrondis */
+  cursor: pointer; /* Changer le curseur au survol */
+}
+
+.send-button:hover {
+  background-color: #0056b3; /* Couleur du bouton au survol */
+}
+
+.sent {
+  background-color: #007bff; /* Couleur de fond pour les messages envoyés */
+  color: white; /* Couleur du texte pour les messages envoyés */
+  align-self: flex-end; /* Aligne les messages envoyés à droite */
+  margin: 10px 0; /* Espacement vertical entre les messages */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 10px; /* Espacement à l'intérieur des messages */
+}
+
+.received {
+  background-color: #e0e0e0; /* Couleur de fond pour les messages reçus */
+  color: black; /* Couleur du texte pour les messages reçus */
+  align-self: flex-start; /* Aligne les messages reçus à gauche */
+  margin: 10px 0; /* Espacement vertical entre les messages */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 10px; /* Espacement à l'intérieur des messages */
 }
