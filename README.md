@@ -57,5 +57,4 @@ Notre travail portant sur un service de messagerie web, nous avons une seule int
 __Fig.1__: Maquette de l'interface du prototype
 
 Pour des raisons de respect des droits d'auteurs, nous utilisons des données générées (avec [`dummy-json`](https://dummyjson.com)).
-Bien que fictives, ces données correspondent à la structure des services concurrents : 20 à 30 articles comportant un titre possiblement long, un auteur et une rubrique (voir [modèle de données](./frontend/sample_data.hbs)). 
-Dans un objectif de sobriété environnementale, les articles sont limités à ceux du jour et de la veille.
+Bien que fictives, ces données correspondent à la structure des services concurrents : un ensemble de conversation appartenant à un utilisateur (voir [modèle de données](./frontend/sample_data.hbs)).
