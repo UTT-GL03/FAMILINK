@@ -25,3 +25,25 @@ Il n’y a pas de réelle substitution physique à la messagerie instantanée à
 
 Ce sont notamment sur ces quatre points que notre travail se portera et que notre prototypage devra respecter.
 
+Scénarios d'usage et impacts
+---
+
+Nous prenons pour hypothèse que notre utilisateur se connecte régulièrement à notre application afin de garder le contact avec les membres de sa famille. Prenant cela en considération, nos scénarios d'usage se baseront sur les deux comportements qui seront les plus observés chez nos utilisateurs : L'entame d'une conversation et la consultation des messages.
+
+Scénario 1 : "Entamer une conversation"
+---
+
+1- L'utilisateur se rend sur l'application web
+2- L'utilisateur sélectionne un contact ou un groupe de famille
+3- Il rédige son message et l'envoie
+4- Il répond aux messages de la personne ou du groupe 
+
+Scénario 2 : "Consulter ses messages"
+---
+
+1- L'utilisateur reçoit une notification de message
+2- Il clique sur la notification
+3- Il lit le message 
+4- Il répond au message ou non
+5- Il consulte les messges d'une autre discussion
+6- Il répond au message ou non
