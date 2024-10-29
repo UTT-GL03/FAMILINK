@@ -33,25 +33,29 @@ Nous prenons pour hypothèse que notre utilisateur se connecte régulièrement �
 Scénario 1 : "Entamer une conversation"
 ---
 
-1- L'utilisateur se rend sur l'application web
-
-2- L'utilisateur sélectionne un contact ou un groupe de famille
-
-3- Il rédige son message et l'envoie
-
-4- Il répond aux messages de la personne ou du groupe 
+1. L'utilisateur se rend sur l'application web
+2. L'utilisateur sélectionne un contact ou un groupe de famille
+3. Il rédige son message et l'envoie
+4. Il répond aux messages de la personne ou du groupe 
 
 Scénario 2 : "Consulter ses messages"
 ---
 
-1- L'utilisateur reçoit une notification de message
+1. L'utilisateur reçoit une notification de message
+2. Il clique sur la notification
+3. Il lit le message 
+4. Il répond au message ou non
+5. Il consulte les messges d'une autre discussion
+6. Il répond au message ou non
 
-2- Il clique sur la notification
+Maquette de l'interface et échantillon de données
+---
 
-3- Il lit le message 
+Notre travail portant sur un service de messagerie web, nous avons une seule interface qui nous permet de visualiser et comprendre les différents scénarios retenus.
 
-4- Il répond au message ou non
+![Maquette de notre interface](./frontend/maquetteProjet.png)
+__Fig.1__: Maquette de l'interface du prototype
 
-5- Il consulte les messges d'une autre discussion
-
-6- Il répond au message ou non
+Pour des raisons de respect des droits d'auteurs, nous utilisons des données générées (avec [`dummy-json`](https://dummyjson.com)).
+Bien que fictives, ces données correspondent à la structure des services concurrents : 20 à 30 articles comportant un titre possiblement long, un auteur et une rubrique (voir [modèle de données](./frontend/sample_data.hbs)). 
+Dans un objectif de sobriété environnementale, les articles sont limités à ceux du jour et de la veille.
