@@ -8,7 +8,7 @@ export default function Discussion(){
         if (senderName) {
             console.log('sender Name :', senderName.textContent);
             console.log('initial sender name :', document.querySelector(".chat-title").textContent);
-            document.querySelector(".chat-title").innerHTML = senderName.textContent;
+            document.querySelector(".chat-title").innerHTML = ("Conversation avec " + senderName.textContent);
             // You can perform any action with the content here
         }
     };
