@@ -34,18 +34,22 @@ Scénario 1 : "Entamer une conversation"
 ---
 
 1. L'utilisateur se rend sur l'application web
-2. L'utilisateur sélectionne un contact ou un groupe de famille
-3. Il rédige son message et l'envoie
+2. L'utilisateur attend 2 secondes
+3. L'utilisateur sélectionne un contact ou un groupe de famille
+4. L'utilisateur attend 2 secondes
+5. L'utilisateur rédige son message
+6. L'utilisateur attend 2 secondes
+7. L'utilisateur envoie son message
 
 Scénario 2 : "Consulter ses messages"
 ---
 
-1. L'utilisateur reçoit une notification de message
-2. Il clique sur la notification
-3. Il lit le message 
-4. Il répond au message
-5. Il consulte les messges d'une autre discussion
-6. Il répond au message
+1. L'utilisateur se rend sur l'application web
+2. L'utilisateur attend 2 secondes
+3. L'utilisateur selectionne une conversation
+4. L'utilisateur attend 2 secondes
+8. L'utilisateur selectionne une autre discussion
+9. L'utilisateur attend 2 secondes
 
 Maquette de l'interface et échantillon de données
 ---
