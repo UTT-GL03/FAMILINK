@@ -12,7 +12,7 @@ De plus, notre exemple s’applique à l’ensemble du monde car il y aurait au 
 Utilité Sociale
 ---
 
-Une famille comporte des caractéristiques propres qui ne s’appliquent pas nécessairement à d’autres groupes d’individus. En effet, une famille comporte jusqu’à 3 voire 4 générations et entretenir des liens malgré les aléas de la vie peut parfois s’avérer compliqué. Par exemple une mutation dans un poste éloigné ou encore le départ des enfants pour leurs études. De plus, ces différentes générations possèdent souvent des habitudes différentes, les personnes âgées se lèvent plus tôt et se couchent plus tôt tandis que les jeunes souvent plus tard, rendant les interactions plus compliquées. La messagerie offre aussi une alternative aux appels qui peuvent être chronophages et parfois perçus comme une corvée là ou ils devraient âtre un plaisir. De ce fait, grâce à la messagerie tout le monde répond quand il en a l’occasion et non plus par obligation. Ce dispositif permettrait donc d’éviter, ou à minima de limiter, l’isolation sociale et la solitude pour tous les membres de la famille.
+Une famille comporte des caractéristiques propres qui ne s’appliquent pas nécessairement à d’autres groupes d’individus. En effet, une famille comporte jusqu’à 3 voire 4 générations et entretenir des liens malgré les aléas de la vie peut parfois s’avérer compliqué. Par exemple une mutation dans un poste éloigné ou encore le départ des enfants pour leurs études. De plus, ces différentes générations possèdent souvent des habitudes différentes, les personnes âgées se lèvent plus tôt et se couchent plus tôt tandis que les jeunes souvent plus tard, rendant les interactions plus compliquées. La messagerie offre aussi une alternative aux appels qui peuvent être chronophages et parfois perçus comme une corvée là ou ils devraient être un plaisir. De ce fait, grâce à la messagerie tout le monde répond quand il en a l’occasion et non plus par obligation. Ce dispositif permettrait donc d’éviter, ou à minima de limiter, l’isolation sociale et la solitude pour tous les membres de la famille.
 
 Effets de la numérisation
 ---   
@@ -23,28 +23,31 @@ Il n’y a pas de réelle substitution physique à la messagerie instantanée à
 - de fonctionnalités supplémentaires sans réelle valeur ajoutée,
 - de partage de fichiers volumineux.
 
-Ce sont principalement sur ces quatre points que notre travail portera, et nous veillerons à ce que notre prototypage les respecte.Scénarios d'usage et impacts
+Scénarios d'usage et impacts
 ---
 
-Nous prenons pour hypothèse que notre utilisateur se connecte régulièrement à notre application afin de garder le contact avec les membres de sa famille. Prenant cela en considération, nos scénarios d'usage se baseront sur les deux comportements qui seront les plus observés chez nos utilisateurs : L'entame d'une conversation et la consultation des messages.
+Nous prenons pour hypothèse que notre utilisateur se connecte régulièrement à notre application afin de garder le contact avec les membres de sa famille. Prenant cela en considération, nos scénarios d'usage se baseront sur les deux comportements qui seront les plus observés chez nos utilisateurs : l'entame d'une conversation et la consultation des messages.
 
 Scénario 1 : "Entamer une conversation"
 ---
 
 1. L'utilisateur se rend sur l'application web
-2. L'utilisateur sélectionne un contact ou un groupe de famille
-3. Il rédige son message et l'envoie
-4. Il répond aux messages de la personne ou du groupe 
+2. L'utilisateur attend 2 secondes
+3. L'utilisateur sélectionne un contact ou un groupe de famille
+4. L'utilisateur attend 2 secondes
+5. L'utilisateur rédige son message
+6. L'utilisateur attend 2 secondes
+7. L'utilisateur envoie son message
 
 Scénario 2 : "Consulter ses messages"
 ---
 
-1. L'utilisateur reçoit une notification de message
-2. Il clique sur la notification
-3. Il lit le message 
-4. Il répond au message ou non
-5. Il consulte les messges d'une autre discussion
-6. Il répond au message ou non
+1. L'utilisateur se rend sur l'application web
+2. L'utilisateur attend 2 secondes
+3. L'utilisateur selectionne une conversation
+4. L'utilisateur attend 2 secondes
+8. L'utilisateur selectionne une autre discussion
+9. L'utilisateur attend 2 secondes
 
 Maquette de l'interface et échantillon de données
 ---
