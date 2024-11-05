@@ -32,7 +32,8 @@ export default function MessageBox(){
             <p>{msg.text}</p>
           </div>
         ))}
-        <div className="input-container">
+      </div> 
+      <div className="input-container">
             <input
             type="text"
             value={message}
@@ -43,8 +44,7 @@ export default function MessageBox(){
             <button onClick={handleSend} className="send-button">
             Envoyer
             </button>
-        </div>
-      </div>  
+        </div> 
     </div>
   );
 };

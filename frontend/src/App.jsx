@@ -1,18 +1,15 @@
-import { useState } from 'react'
-import Header from './Components/Header'
-import Discussion from './Components/Discussion.jsx'
-import MessageBox from './Components/MessageBox.jsx'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Content from './Components/Content.jsx';
 import './App.css'
 
 function App() {
+
   return (
-    <div className = "components">
-      <Header />
-      <div className = "components">
-        <Discussion />
-        <MessageBox />
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Content />} />
+      </Routes>
+    </Router>
   )
 }
 
