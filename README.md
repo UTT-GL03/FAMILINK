@@ -34,22 +34,33 @@ Scénario 1 : "Entamer une conversation"
 ---
 
 1. L'utilisateur se rend sur l'application web
-2. L'utilisateur attend 2 secondes
-3. L'utilisateur sélectionne un contact ou un groupe de famille
-4. L'utilisateur attend 2 secondes
-5. L'utilisateur rédige son message
-6. L'utilisateur attend 2 secondes
-7. L'utilisateur envoie son message
+2. L'utilisateur sélectionne un contact ou un groupe de famille
+3. L'utilisateur rédige son message
+4. L'utilisateur envoie son message
 
 Scénario 2 : "Consulter ses messages"
 ---
 
 1. L'utilisateur se rend sur l'application web
-2. L'utilisateur attend 2 secondes
-3. L'utilisateur selectionne une conversation
-4. L'utilisateur attend 2 secondes
-8. L'utilisateur selectionne une autre discussion
-9. L'utilisateur attend 2 secondes
+2. L'utilisateur selectionne une conversation
+3. L'utilisateur selectionne une autre conversation
+4. L'utilisateur selectionne une autre conversation
+5. L'utilisateur selectionne une autre conversation
+
+Impact de l'execution du scénario auprès du service concurrent Discord
+---
+L'EcoIndex d'une page (de A à G) est calculé (sources : EcoIndex, Octo, GreenIT) en fonction du positionnement de cette page parmi les pages mondiales concernant :
+
+- le nombre de requêtes lancées,
+- le poids des téléchargements,
+- le nombre d'éléments du document.
+
+Nous avons décidé de comparer l'impact des scénarios sur l'application web de la messagerie Discord. Les résultats sont les suivants :
+
+- [Scénario 1](https://github.com/UTT-GL03/FAMILINK/tree/main/GreenIT%20Data/Scenario_1)
+- [Scénario 2](https://github.com/UTT-GL03/FAMILINK/tree/main/GreenIT%20Data/Scenario_2)
+
+Chaque capture d'écran correspond à l'étape correspondante dans les scénarios.
 
 Maquette de l'interface et échantillon de données
 ---
