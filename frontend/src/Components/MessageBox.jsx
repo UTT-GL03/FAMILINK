@@ -30,8 +30,14 @@ export default function MessageBox({ selectedChat, messages, onSendMessage }) {
             <p>{msg.text}</p>
           </div>
         ))}
+<<<<<<< HEAD
         <div className="input-container">
           <input
+=======
+      </div> 
+      <div className="input-container">
+            <input
+>>>>>>> 599d54f (Feature: Discussion should be clickable and indexed')
             type="text"
             value={message}
             onChange={handleChange}
@@ -40,9 +46,14 @@ export default function MessageBox({ selectedChat, messages, onSendMessage }) {
           />
           <button onClick={handleSend} className="send-button">
             Envoyer
+<<<<<<< HEAD
           </button>
         </div>
       </div>
+=======
+            </button>
+        </div> 
+>>>>>>> 599d54f (Feature: Discussion should be clickable and indexed')
     </div>
   );
 }

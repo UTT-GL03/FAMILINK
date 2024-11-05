@@ -1,23 +1,23 @@
-/* App.css */
-
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  height: 100vh; 
   width: 100vw;
 }
+
 #root {
   width: 100%;
   display: flex;
 }
+
 .components {
   display: flex;
   width: 100%;
 }
 
 .app-content {
-  display: flex; /* Permet de disposer la barre latérale et la fenêtre de chat côte à côte */
-  flex-grow: 1; /* Permet à ce conteneur de prendre tout l'espace disponible */
+  display: flex;
+  flex-grow: 1;
 }
 
 .header {
@@ -37,7 +37,7 @@
 
 .sidebar {
   width: 300px;
-  height: 100vh;
+  height: calc(100vh - 80px);
   background-color: #f1f1f1;
   padding: 15px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -66,6 +66,21 @@
   margin-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.chat-title-container {
+  background-color: #e0e0e0; 
+  position: sticky;
+  top: 15px;
+  z-index: 1;
+  margin-bottom: 50px;
+  border-radius: 8px;
+}
+
+.chat-title {
+  font-size: 1.5rem;
+  margin: 0; 
 }
 
 .chat-sender {
@@ -76,68 +91,68 @@
 .chat-message {
   color: #666;
 }
+
 .chat-window {
   flex-grow: 1;
-  height: 100vh;
+  height: calc(100vh - 80px);
   padding: 15px;
-  padding-top: 70px; /* Pour éviter le chevauchement avec le header */
-  overflow-y: hidden; /* Masque le débordement pour ne pas voir les barres de défilement */
-  background-color: #f9f9f9; /* Couleur de fond pour la zone de chat */
+  padding-top: 70px;
+  overflow-y: hidden;
+  background-color: #f9f9f9;
   display: flex;
-  flex-direction: column; /* Permet de disposer les messages et la barre de saisie verticalement */
+  flex-direction: column;
 }
 
 .message-container {
-  flex-grow: 1; /* Permet à la zone des messages de prendre tout l'espace disponible */
-  overflow-y: auto; /* Ajoute du défilement si nécessaire */
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .input-container {
-  position: fixed; /* Fixe la barre de saisie en bas de l'écran */
-  bottom: 0; /* Ancre la barre au bas de la fenêtre */
-  left: 0;
-  right: 0; /* Aligne à droite */
-  padding: 10px; /* Espacement autour de la barre de saisie */
-  background-color: #fff; /* Couleur de fond pour la barre de saisie */
-  border-top: 1px solid #ccc; /* Bordure en haut pour séparer */
-  display: flex; /* Aligne le champ de saisie et le bouton horizontalement */
+  bottom: 0; 
+  left: 300;
+  right: 0; 
+  padding: 10px; 
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: flex;
 }
 
 .input-field {
-  flex-grow: 1; /* Permet au champ de saisie de prendre tout l'espace disponible */
-  padding: 10px; /* Espacement à l'intérieur du champ */
-  border: 1px solid #ccc; /* Bordure autour du champ */
-  border-radius: 4px; /* Coins arrondis */
-  margin-right: 10px; /* Espacement entre le champ et le bouton */
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
 }
 
 .send-button {
-  padding: 10px 15px; /* Espacement à l'intérieur du bouton */
-  background-color: #007bff; /* Couleur de fond du bouton */
-  color: white; /* Couleur du texte */
-  border: none; /* Pas de bordure */
-  border-radius: 4px; /* Coins arrondis */
-  cursor: pointer; /* Changer le curseur au survol */
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .send-button:hover {
-  background-color: #0056b3; /* Couleur du bouton au survol */
+  background-color: #0056b3;
 }
 
 .sent {
-  background-color: #007bff; /* Couleur de fond pour les messages envoyés */
-  color: white; /* Couleur du texte pour les messages envoyés */
-  align-self: flex-end; /* Aligne les messages envoyés à droite */
-  margin: 10px 0; /* Espacement vertical entre les messages */
-  border-radius: 10px; /* Coins arrondis */
-  padding: 10px; /* Espacement à l'intérieur des messages */
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .received {
-  background-color: #e0e0e0; /* Couleur de fond pour les messages reçus */
-  color: black; /* Couleur du texte pour les messages reçus */
-  align-self: flex-start; /* Aligne les messages reçus à gauche */
-  margin: 10px 0; /* Espacement vertical entre les messages */
-  border-radius: 10px; /* Coins arrondis */
-  padding: 10px; /* Espacement à l'intérieur des messages */
+  background-color: #e0e0e0;
+  color: black;
+  align-self: flex-start;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 10px;
 }
