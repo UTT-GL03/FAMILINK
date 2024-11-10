@@ -1,15 +1,9 @@
-export default function Discussion(){
+export default function Discussion({ onSelectChat }){
     const handleDisc = (event) => {
         // Change de discussion
-        const disc = event.target.id;
-        console.log(disc);
-
         const senderName = event.currentTarget.querySelector('.chat-sender');
         if (senderName) {
-            console.log('sender Name :', senderName.textContent);
-            console.log('initial sender name :', document.querySelector(".chat-title").textContent);
-            document.querySelector(".chat-title").innerHTML = ("Conversation avec " + senderName.textContent);
-            // You can perform any action with the content here
+            onSelectChat(senderName.textContent); // Met à jour le nom de la discussion sélectionnée
         }
     };
 
