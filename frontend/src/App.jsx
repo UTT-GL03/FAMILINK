@@ -1,12 +1,11 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Content from './Components/Content.jsx';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Content from './Components/Content.jsx';
 import './App.css'
+import Header from './Components/Header';
+import Discussion from "./Components/Discussion";
+import MessageBox from "./Components/MessageBox";
+import { useState } from 'react';
 
 function App() {
 
-<<<<<<< HEAD
   const [selectedChat, setSelectedChat] = useState("Alice");
 
   // Contenu de chaque discussion stocké par nom
@@ -53,15 +52,6 @@ function App() {
       </div>
     </div>
   );
-=======
-  return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Content />} />
-      </Routes>
-    </Router>
-  )
->>>>>>> 599d54f (Feature: Discussion should be clickable and indexed')
 }
 
 export default App;
