@@ -1,0 +1,16 @@
+{
+    "Alice": [
+      { "text": "Salut ! Comment ça va ?", "sender": "Alice" },
+      { "text": "Ça va bien, merci ! Et toi ?", "sender": "Moi" },
+      { "text": "Tout va bien ! Quoi de neuf ?", "sender": "Alice" }
+    ],
+    "Solal Carroll": [
+      { "text": "Bonjour ! On se voit demain ?", "sender": "Solal Carroll" },
+      { "text": "Oui, ça marche pour moi.", "sender": "Moi" }
+    ],
+    "Alexis Carroll": [
+      { "text": "Salut ! J'ai besoin d'aide pour un projet.", "sender": "Alexis Carroll" },
+      { "text": "D'accord, dis-moi ce dont tu as besoin.", "sender": "Moi" }
+    ]
+  }
+  
