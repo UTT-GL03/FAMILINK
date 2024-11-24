@@ -34,7 +34,7 @@ Scénario 1 : "Entamer une conversation"
 ---
 
 1. L'utilisateur se rend sur l'application web
-2. L'utilisateur sélectionne un contact ou un groupe de famille
+2. L'utilisateur sélectionne un contact
 3. L'utilisateur rédige son message
 4. L'utilisateur envoie son message
 
