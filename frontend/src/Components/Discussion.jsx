@@ -1,68 +1,37 @@
-export default function Discussion({ onSelectChat }){
+import { useEffect, useState } from 'react';
+
+export default function Discussion({ onSelectChat }) {
+    const [discussions, setDiscussions] = useState([]);
+
+    useEffect(() => {
+        fetch('/src/data/discussions.json')  
+            .then(response => response.json())
+            .then(data => {
+                const noms = Object.keys(data);
+                setDiscussions(noms); 
+            })
+            .catch(error => console.error('Erreur de chargement des discussions:', error));
+    }, []);
+
     const handleDisc = (event) => {
-        // Change de discussion
         const senderName = event.currentTarget.querySelector('.chat-sender');
         if (senderName) {
-            onSelectChat(senderName.textContent); // Met à jour le nom de la discussion sélectionnée
+            onSelectChat(senderName.textContent);  
         }
     };
 
-    return(
+    return (
         <div className="sidebar">
             <div className="sidebar-title-container">
                 <h2 className="sidebar-title">Discussions</h2>
             </div>
-            <div onClick={handleDisc} className="chat-box" id="0">
-                <p className="chat-sender">Solal Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="1">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="2">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="3">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="4">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="5">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="6">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="7">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="8">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-            <div onClick={handleDisc} className="chat-box" id="9">
-                <p className="chat-sender">Alexis Carroll</p>
-                <p className="chat-message">Ut condimentum blandit.</p>
-                <p className="chat-time">"2024-10-15T14:00:00Z"</p>
-            </div>
-
+            {discussions.map((nom, index) => (
+                <div key={index} onClick={handleDisc} className="chat-box">
+                    <p className="chat-sender">{nom}</p>
+                    <p className="chat-message">Dernier message ici...</p> {/* Message à ajouter plus tard */}
+                    <p className="chat-time">"2024-10-15T14:00:00Z"</p> {/* Timestamp à ajouter plus tard */}
+                </div>
+            ))}
         </div>
     );
 }
