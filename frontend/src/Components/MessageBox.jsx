@@ -1,85 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
 
-// Cache pour stocker les discussions déjà récupérées
-const messageCache = {};
+export default function Discussion({ onSelectChat }) {
+  const [discussions, setDiscussions] = useState([]);
 
-export default function MessageBox({ selectedChat }) {
-  const [messages, setMessages] = useState([]); // Messages de la discussion active
-  const [message, setMessage] = useState(""); // Message en cours d'écriture
-  const [isLoading, setIsLoading] = useState(true); // Indique si les données sont en cours de chargement
-
-  // Charge les messages lorsqu'une nouvelle discussion est sélectionnée
   useEffect(() => {
-    const fetchMessages = async () => {
-      setIsLoading(true);
+    const fetchDiscussion = async () => {
+      const documentId = '3ff75a3f085fac81d045a3fede001fa9'; // L'ID de ton document spécifique
 
-      // Si la discussion est déjà dans le cache, l'utiliser
-      if (messageCache[selectedChat]) {
-        setMessages(messageCache[selectedChat]);
-        setIsLoading(false);
-        return;
-      }
-
-      // Sinon, effectuer le fetch
       try {
-        const response = await fetch('/src/data/discussions.json'); // Charge toutes les discussions
+        // Récupère le document spécifique avec son ID
+        const response = await fetch(`http://localhost:5984/familink/${documentId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
         const data = await response.json();
-        const chatMessages = data[selectedChat] || []; // Récupère les messages pour la discussion active
-        messageCache[selectedChat] = chatMessages; // Stocke les données dans le cache
-        setMessages(chatMessages);
+        const discussionsList = [];
+
+        // Vérifie si le document a des discussions et extrait les noms
+        for (const sender in data) {
+          if (sender !== '_id' && sender !== '_rev') {
+            discussionsList.push(sender);
+          }
+        }
+
+        setDiscussions(discussionsList); // Mets à jour l'état avec les discussions extraites
       } catch (error) {
-        console.error("Erreur lors du chargement des messages :", error);
-        setMessages([]); // Définit un état vide en cas d'erreur
-      } finally {
-        setIsLoading(false);
+        console.error('Error fetching discussion:', error);
       }
     };
 
-    fetchMessages();
-  }, [selectedChat]); // Recharge les messages à chaque changement de discussion
+    fetchDiscussion();
+  }, []); // Le tableau vide [] signifie que ce useEffect ne s'exécute qu'une seule fois après le premier rendu
 
-  // Ajoute un message localement et dans le cache
-  const handleSend = () => {
-    if (message.trim() === "") return;
-
-    const newMessage = { text: message, sender: "Moi" };
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages); // Met à jour l'état local
-    messageCache[selectedChat] = updatedMessages; // Met à jour le cache
-    setMessage(""); // Réinitialise le champ de saisie
+  const handleDisc = (event) => {
+    const senderName = event.currentTarget.querySelector('.chat-sender');
+    if (senderName) {
+      onSelectChat(senderName.textContent); // Met à jour la discussion sélectionnée
+    }
   };
 
   return (
-    <div className="chat-window">
-      <div className="chat-title-container">
-        <h2 className="chat-title">Conversation avec {selectedChat}</h2>
+    <div className="sidebar">
+      <div className="sidebar-title-container">
+        <h2 className="sidebar-title">Discussions</h2>
       </div>
-      <div className="message-container">
-        {isLoading ? (
-          <p>Chargement des messages...</p>
-        ) : (
-          messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`${msg.sender === "Moi" ? "sent" : "received"}`}
-            >
-              <p>{msg.text}</p>
-            </div>
-          ))
-        )}
-      </div>
-      <div className="input-container">
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Tapez votre message..."
-          className="input-field"
-        />
-        <button onClick={handleSend} className="send-button">
-          Envoyer
-        </button>
-      </div>
+
+      {/* Afficher dynamiquement les discussions récupérées */}
+      {discussions.map((sender, index) => (
+        <div onClick={handleDisc} className="chat-box" key={index}>
+          <p className="chat-sender">{sender}</p>
+          <p className="chat-message">Dernier message...</p>
+          <p className="chat-time">"2024-10-15T14:00:00Z"</p>
+        </div>
+      ))}
     </div>
   );
 }
