@@ -1,11 +1,10 @@
 {
   "docs": [
-    {{#repeat 10}}
+    {{#repeat 100}}
     {
-      "_id": {{@index}},
-      "from": "{{firstName}}",
-      "to": "{{firstName}}",
-      "messages": "{{lorem min=3 max=20}}",
+      "from": "{{random 'Dan' 'Solal' 'Raph' 'Momo' 'Aurelien' 'Remi'}}",
+      "to": "{{random 'Dan' 'Solal' 'Raph' 'Momo' 'Aurelien' 'Remi'}}",
+      "messages": "{{lorem min=3 max=40}}",
       "time": "{{date '2024-01-01' '2024-12-31' 'YYYY-MM-DD HH:mm:ss'}}"
     }
     {{/repeat}}
