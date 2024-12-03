@@ -5,17 +5,10 @@ export default function Discussion({ onSelectChat }) {
 
   useEffect(() => {
     const fetchDiscussion = async () => {
-      const documentId = '3ff75a3f085fac81d045a3fede001fa9'; // L'ID de ton document spécifique
 
       try {
         // Récupère le document spécifique avec son ID
-        const response = await fetch(`http://localhost:5984/familink/${documentId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
+        const response = await fetch('http://localhost:5984/familink/_design/newDesignDoc/_view/chat?include_docs=true&start_key=%5B%22Momo%22%2C%20%22Aurelien%22%5D&end_key=%5B%22Momo%22%2C%20%22Aurelien%22%2C%7B%7D%5D&reduce=false');
         const data = await response.json();
         const discussionsList = [];
 
@@ -33,7 +26,7 @@ export default function Discussion({ onSelectChat }) {
     };
 
     fetchDiscussion();
-  }, []); // Le tableau vide [] signifie que ce useEffect ne s'exécute qu'une seule fois après le premier rendu
+  }, []); 
 
   const handleDisc = (event) => {
     const senderName = event.currentTarget.querySelector('.chat-sender');
@@ -48,7 +41,6 @@ export default function Discussion({ onSelectChat }) {
         <h2 className="sidebar-title">Discussions</h2>
       </div>
 
-      {/* Afficher dynamiquement les discussions récupérées */}
       {discussions.map((sender, index) => (
         <div onClick={handleDisc} className="chat-box" key={index}>
           <p className="chat-sender">{sender}</p>
