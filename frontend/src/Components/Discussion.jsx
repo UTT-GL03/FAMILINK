@@ -4,7 +4,7 @@ export default function Discussion({ onSelectChat }) {
     const [discussions, setDiscussions] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5984/familink/_design/newDesignDoc/_view/chat?start_key=%5B%22Momo%22%5D&end_key=%5B%22Momo%22%2C%20%7B%7D%20%5D&reduce=true&group=true')  
+        fetch('http://localhost:5984/familink/_design/newDesignDoc/_view/chat?start_key=%5B%22Momo%22%5D&end_key=%5B%22Momo%22%2C%20%7B%7D%20%5D&reduce=true&group=true&group_level=2')  
             .then(response => response.json())
             .then(data => {
                 const noms = data.rows.map(x => x.key[1]);
