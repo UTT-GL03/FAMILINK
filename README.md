@@ -126,8 +126,9 @@ Lors du chargement de la page, nous avons une conversation qui s'affiche directe
 ![Conversation avec Alice](./frontend/proto1_im1.png)
 _Fig.2_: Prototype 1 : affichage de la conversation de base
 
-| | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko)
-| 1. L'utilisateur se rend sur l'application web | 79,21🟢 | 1.42 | 188 | 23 |  1296
+|    | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
+|----|----------|-------------|---------------|----------|------------------------|
+| 1. L'utilisateur se rend sur l'application web | 79,21🟢 | 1.42 | 188 | 23 |  1296 |
 
 _Tab1_: Evaluation de l'impact sur la page d'accueil
 
@@ -135,5 +136,6 @@ _Tab1_: Evaluation de l'impact sur la page d'accueil
 ![Conversation avec Solal](./frontend/proto1_im2.png)
 _Fig.3_: Prototype 1 : conversation avec Solal
 
-| | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko)
+|    | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
+|----|----------|-------------|---------------|----------|------------------------|
 | 1. L'utilisateur sélectionne une conversation | 78,70🟢 | 1.43 | 188 | 28 |  1296
