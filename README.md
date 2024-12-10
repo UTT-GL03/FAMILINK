@@ -105,3 +105,33 @@ __Fig.1__: Maquette de l'interface du prototype
 
 Pour des raisons de respect des droits d'auteurs, nous utilisons des données générées (avec [`dummy-json`](https://dummyjson.com)).
 Bien que fictives, ces données correspondent à la structure des services concurrents : un ensemble de conversation appartenant à un utilisateur (voir [modèle de données](./frontend/sample_data.hbs)).
+
+
+## Prototype n°1 : Fonctionnalités pour le scénario prioritaire avec des données chargées de manière statique
+
+
+Pour la première version de notre prototype: 
+
+- les données sont chargées de manière statique dans MessageBox.jsx
+- les  fonctionnalités implémentées sont la lecture et l'envoi des messages
+
+Notre interface permet de charger dans la barre de discussion les conversations qu'on a avec différentes personnes et nous n'avons plus qu'à cliquer sur une conversation pour afficher les messages relatifs.
+
+Lors du chargement de la page, nous avons une conversation qui s'affiche directement
+
+### Conversations
+
+![Conversation avec Alice](./frontend/proto1_im1.png)
+_Fig.2_: Prototype 1 : affichage de la conversation de base
+
+| | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko)
+| 1. L'utilisateur se rend sur l'application web | 79,21🟢 | 1.42 | 188 | 23 |  1296
+
+_Tab1_: Evaluation de l'impact sur la page d'accueil
+
+
+![Conversation avec Solal](./frontend/proto1_im2.png)
+_Fig.3_: Prototype 1 : conversation avec Solal
+
+| | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko)
+| 1. L'utilisateur sélectionne une conversation | 78,70🟢 | 1.43 | 188 | 28 |  1296
