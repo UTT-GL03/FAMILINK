@@ -27,8 +27,8 @@ services:
         alias put="curl -X PUT -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'"
         put backend:5984/_node/nonode@nohost/_config/chttpd/enable_cors --data '"true"'
         put backend:5984/_node/nonode@nohost/_config/cors/origins --data '"*"'
-        put backend:5984/FAMILINK
-        put backend:5984/FAMILINK/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
+        put backend:5984/familink
+        put backend:5984/familink/_security --data '{"members":{"roles":[]},"admins":{"roles":["_admin"]}}'
     depends_on:
       backend:
         condition: service_healthy
@@ -38,9 +38,11 @@ services:
     entrypoint: ["/bin/sh","-c"]
     volumes:
       - ./frontend/public/sample_data.json:/sample_data.json
+      - ./frontend/_newDesignDoc.json:/_newDesignDoc.json
     command:
       - |
-        curl -X POST http://backend:5984/FAMILINK/_bulk_docs -H "Content-Type: application/json" -d @/sample_data.json
+        curl -X POST http://backend:5984/familink/_bulk_docs -H "Content-Type: application/json" -d @/sample_data.json
+        curl -X PUT http://backend:5984/familink/_design/newDesignDoc -H "Content-Type: application/json" -d @/_newDesignDoc.json -u '${COUCHDB_USER}:${COUCHDB_PASSWORD}'
     depends_on:
       accessible_backend:
         condition: service_completed_successfully
