@@ -1,0 +1,7 @@
+baseURL: http://localhost
+projectName: FAMILINK
+scenarios:
+    - path: ./benchmark/scenario1.js
+      name: Entamer une conversation
+    - path: ./benchmark/scenario2.js
+      name: Consulter ses messages
