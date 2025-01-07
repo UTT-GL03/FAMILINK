@@ -114,7 +114,7 @@ Bien que fictives, ces données correspondent à la structure des services concu
 
 Pour la première version de notre prototype: 
 
-- les données sont chargées de manière statique dans MessageBox.jsx
+- les données sont chargées de manière statique.
 - les  fonctionnalités implémentées sont la lecture et l'envoi des messages
 
 Notre interface permet de charger dans la barre de discussion les conversations qu'on a avec différentes personnes et nous n'avons plus qu'à cliquer sur une conversation pour afficher les messages relatifs.
