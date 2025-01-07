@@ -1,7 +1,10 @@
 baseURL: http://localhost
-projectName: FAMILINK
+projectName: Familink_v2
 scenarios:
     - path: ./benchmark/scenario1.js
       name: Entamer une conversation
     - path: ./benchmark/scenario2.js
       name: Consulter ses messages
+containers:
+  - familink-static_hosting-1
+  - familink-backend-1
