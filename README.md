@@ -95,6 +95,8 @@ Nous avons décidé de comparer l'impact des scénarios sur les application web 
 
 Chaque capture d'écran correspond à l'étape correspondante dans les scénarios avec le suffixe _ds pour discord et _ws pour whatsapp web. On peut remarquer que Discord est légèrement plus sobre ecologiquement que whatsapp excepté dans le cas du partage d'image ou de liens.
 
+La réalisation de ces scénarios nous montre que l'impact écologique est déjà énorme dès l'arrivée sur le site, ensuite on voit que lors de la sélection d'une conversation le chargement des données a lui aussi un fort impact. Pour le premier point, on peut expliquer cela par la présence de publicités parfois ou encore de mauvaise optimisation de l'application. Pour ce qui est de la sélection des conversations, on peut remarquer que les conversations avec des liens, images ou encore des GIFs ont un grand impact. Pour ces raisons, notre applications n'aura bien évidemment pas de publicités, ne proposera pas l'envoi de fichiers multimédias (en tout cas dans un premier temps) et proposera un design simple et basique pour optimiser un maximum les performances.
+
 Maquette de l'interface et échantillon de données
 ---
 
@@ -137,3 +139,38 @@ _Fig.3_: Prototype 1 : conversation avec Solal
 |    | EcoIndex | GES (gCO2e) | Taille du DOM | Requêtes | Taille de la page (ko) |
 |----|----------|-------------|---------------|----------|------------------------|
 | 1. L'utilisateur sélectionne une conversation | 78,70🟢 | 1.43 | 188 | 28 |  1296
+
+Comme nous l'avions prévu, l'interface étant très épuré et la seule présence de messages textuels rendent notre application respectueuse de l'environnement.
+
+## Prototype n°2 : Fonctionnalités pour le scénario prioritaire avec données statiques chargées de manière dynamique
+
+Dans cette nouvelle version du prototype, le frontend récupère désormais les données statiques via le réseau après un premier affichage vide. Cette approche, plus proche d’un fonctionnement réel, ajoute une requête par page affichée.
+
+Sur le plan de l’impact environnemental, les résultats restent globalement inchangés par rapport à la version précédente, à l’exception d’une requête supplémentaire. À ce stade, l’EcoIndex ne devrait plus varier de manière notable, sauf en cas de changements importants. Pour aller plus loin, nous passerons à l’utilisation de GreenFrame, un outil d’analyse qui mesure de façon précise l’impact direct des consultations en s’appuyant sur les données d’utilisation des ressources matérielles (CPU, mémoire, réseau, disque), sans intégrer le cycle de vie du terminal. Cependant, étant donné que les différentes applications de messagerie possèdent toutes une étape d'identification, il est impossible pour nous de les analyser avec GreenFrame. C'est pour cette raison que pendant la suite de notre rapport nous serons dans l'incapacité de comparer notre application à des services existants et nous baserons donc seulement sur nos propres mesures.
+
+Nous pouvons remarquer, que dans notre prototype, on a 2 pics significatifs de CPU à 1 et 7 secondes (voir Fig.4) et un pic de réseau lui aussi à 1 seconde. Contrairement à ce que nous pensions, le CPU et le réseau ne représentent que 5% de la consommation totale de notre application, les 95% restants sont quand à eux consommé par l'écran.
+
+![Prototype n°2 : Impact client](Screen_Prototype2.png)
+_Fig.4_: Prototype 2 : Impact du CPU et du Réseau
+
+Le second atout de GreenFrame est que nous pouvons désormais simuler et mesurer la partie "serveur" de notre application (voir Fig.5). Cependant, pour cette partie, comme les données sont toujours statique, son impact est négligeable par rapport à la consommation du client (1,3%).
+
+![Prototype n°2 : Impact du serveur](Screen_Prototype2_Network.png)
+_Fig.5_: Prototype 2 : Impact du serveur
+
+
+##Prototype n°3 : Fonctionnalités pour le scénario prioritaire avec données stockées dans une base de données
+
+Pour cette troisième version du prototype, nous avons ajouté une base de données avec un API Web (CouchDB). L'intérêt pour nous de fonctionner avec une base de données est que dans on premier temps, la pagination de notre application pourra être facililité tout comme le filtrage des conversations. De plus, en étendant notre application à plus grande échelle nous pourrions avoir une base de données qui avec une simple requête pourrait fournir toutes les conversations de l'utilisateur connecté.
+
+Comme nous n'avions pas fait les mesures GreenFrame avant d'ajouter le backend dans notre docker, nous ne pouvons pas remarquer la différence drastique causé par celui ci lors du passage du prototype 2 au prototype 3. Nous pouvons cependant remarquer que le passage à la Base de données a tout de même augmenter la consommation du CPU de 0,7 mWH avec 0,03 secondes d'utilisation de plus (voir Fig.6).
+![Prototype n°2 : OverView](Screen_Prototype2_Overall.png)
+![Prototype n°3 : OverView](Screen_Prototype3_Overall.png)
+_Fig.6_: Comparaison des prototypes 2 et 3
+
+Cette utilisation du CPU est bien visible grâce a GreenFrame dans la section backend qui représente l'utilisation de la base de données (voir Fig.7).
+
+![Prototype n°3 : Backend](Screen_Prototype3_backend.png)
+_Fig.7_ : Impact Ecologique de l'ajout de la base de données
+
+Toutes ces mesures nous indique pour l'instant que l'ajout d'une base de données n'est pas bénéfique pour l'environnement, cependant ce choix de conception devrait être "rentabilisé" avec l'augmentation de la quantité de données à traiter.
