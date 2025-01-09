@@ -161,7 +161,7 @@ Le second atout de GreenFrame est que nous pouvons désormais simuler et mesurer
 _Fig.5_: Prototype 2 : Impact du serveur
 
 
-##Prototype n°3 : Fonctionnalités pour le scénario prioritaire avec données stockées dans une base de données
+## Prototype n°3 : Fonctionnalités pour le scénario prioritaire avec données stockées dans une base de données
 
 Pour cette troisième version du prototype, nous avons ajouté une base de données avec un API Web (CouchDB). L'intérêt pour nous de fonctionner avec une base de données est que dans on premier temps, la pagination de notre application pourra être facililité tout comme le filtrage des conversations. De plus, en étendant notre application à plus grande échelle nous pourrions avoir une base de données qui avec une simple requête pourrait fournir toutes les conversations de l'utilisateur connecté.
 
