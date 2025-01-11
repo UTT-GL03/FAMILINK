@@ -10,6 +10,9 @@ export default function Discussion({ onSelectChat }) {
                 const noms = data.rows.map(x => x.key[1]);
                 console.log(noms);
                 setDiscussions(noms); 
+                if (noms.length > 0) {
+                    onSelectChat(noms[0]);
+                }
             })
             .catch(error => console.error('Erreur de chargement des discussions:', error));
     }, []);

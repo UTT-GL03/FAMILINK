@@ -2,7 +2,7 @@
   "_id": "_design/newDesignDoc",
   "views": {
     "chat": {
-      "map": "function (doc) {\n  emit([doc.from, doc.time], \"from\");\n  emit([doc.to, doc.time], \"to\");\n}"
+      "map": "function (doc) {\n  emit([doc.from, doc.to, doc.time], \"from\");\n  emit([doc.to, doc.from, doc.time], \"to\");\n}"
     }
   },
   "language": "javascript"
