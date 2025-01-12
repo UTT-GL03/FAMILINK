@@ -29,7 +29,7 @@ export default function MessageBox({ selectedChat }) {
 
       try {
         const response = await fetch(
-          `http://localhost:5984/familink/_design/newDesignDoc/_view/chat?include_docs=true&start_key=%5B%22Momo%22%2C%20%22${selectedChat}%22%5D&end_key=%5B%22Momo%22%2C%20%22${selectedChat}%22%2C%7B%7D%5D&reduce=false`
+          `http://localhost:5984/familink/_design/newDesignDoc/_view/chat?include_docs=true&start_key=%5B%22Momo%22%2C%20%22${selectedChat}%22%5D&end_key=%5B%22Momo%22%2C%20%22${selectedChat}%22%2C%7B%7D%5D&reduce=false&limit=20&descending=false`
         );
         const data = await response.json();
         const chatMessages = data.rows.map((row) => ({
