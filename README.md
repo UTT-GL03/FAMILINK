@@ -3,7 +3,6 @@ Se soucier de sa famille et de l’environnement
 ---
 
 Choix du sujet 
-Choix du sujet 
 ---
 
 Personnellement, nous utilisons chaque jour différentes messageries pour garder contact avec nos proches. Que ça soit pour contacter la famille dans un pays étranger ou pour garder contact avec des groupes d’amis pour des activités sportives, les messageries sont pour nous des outils essentiels.
@@ -175,4 +174,52 @@ Cette utilisation du CPU est bien visible grâce a GreenFrame dans la section ba
 ![Prototype n°3 : Backend](Screen_Prototype3_backend.png)
 _Fig.7_ : Impact Ecologique de l'ajout de la base de données
 
-Toutes ces mesures nous indique pour l'instant que l'ajout d'une base de données n'est pas bénéfique pour l'environnement, cependant ce choix de conception devrait être "rentabilisé" avec l'augmentation de la quantité de données à traiter.
+Toutes ces mesures nous indique pour l'instant que l'ajout d'une base de données n'est pas bénéfique pour l'environnement, cependant ce choix de conception devrait être "rentabilisé" avec l'augmentation de la quantité de données à traiter et la façon dont on les traite.
+
+## Prototype n°4 : Fonctionnalités pour le scénario prioritaire avec filtrage des données
+
+### Passage à l'échelle 
+
+Pour notre projet, je pense qu'un cas singulier se présente. En effet, dans le cadre d'une application de messagerie populaire, on parle de plusieurs milliers de milliards de messages par mois. A partir de ce postulat, plusieurs choix de conception peuvent être fait :  on peut supprimer les messages au bout d'un certain temps (comme le fait Snapchat par exemple), on peut limiter le nombre de message par personne ou bien ne rien faire et stocker tout les messages. Pour ce qui est de notre application, en admettant qu'elle serait utilisé uniquement pour parler aux membres de sa famille et ne serait pas l'application de messagerie principale des utilisateurs, on peut supposer que chaque utilisateur echange 10 messages par jour, soit 1000 messages au bout de 3 mois et un peu plus d'une semaine. En prenant cela en compte, il suffirait de 10 utilisateurs pour avoir une base de données de 10 000 messages en un peu plus de 3 mois. En multipliant par 100 le nombre d'éléments dans notre base de données, nous avons décidé de faire un premier test pour voir si notre application connaitrait une forte augmentation de son impact écologique. Il s'avère que ce n'est pas du tout le cas, aucun changement n'est observé du passage de 100 à 10 000 éléments (voir Fig.8). 
+
+![Passage à 10k elements](10k_Overview.png)
+_Fig.8_ : Passage à 10 000 éléments
+
+Comment expliquer cela ? D'un côté nous avons la partie affichage des messages, sans trop de doutes, en augmentant le nombre de message la différence est moindre car on ne charge qu'une seule discussion à la fois. Donc, plutot que de charger et d'afficher une dizaine de message, on en affiche entre environ 100. Etant donné que ces messages sont des simples chaines de caractères, pas des images ou des vidéos, cela n'a pas de réel impact. De l'autre côté, nous avons les boutons contenant le nom des interlocuteurs qui sont récupérés à l'aide d'un reduce qui est count, pour cette opération, toute la base de données doit être parcourus pour savoir si l'utilisateur connecté a intéragi ou non avec la susdite personne. De ce côté la, nous pourrions avoir un problème, puisque nous n'avons pas d'autres moyen pour pouvoir récupérer les informations sur les personnes si ce n'est celui-ci. Toutefois, CouchDB est tout de même sensé pouvoir gérer des bases de données volumineuses, pour vérifier cela, nous avons décider d'augmenter de 1 la puissance de 10 et d'essayer pour 100 000 élements(voir Fig.9).
+
+![Passage à 100k elements](100k_Overview.png)
+_Fig.9_ : Passage à 100 000 éléments
+
+Cette fois ci, on voit bien une différence très nette. Revenons à nos deux requêtes, après le passage de 10 000 à 100 000 éléments, le nombre de messages passent de 100 à  1000 par conversation. Ici, pour ce qui est du backend, il est fort probable que l'ajout des 100 000 éléments en eux-mêmes monopolisent l'utilisation du CPU et cause cette consommation extravagante que nous ne saurions corriger au vu du nombre de données en jeu (Voir Fig.10). Cependant, à ce stade, il est possible et même probable que le chargement d'un millier de message impacte notre application et puisse être en partie la raison de cette augmentation côté client (Voir Fig.11).
+
+![Passage à 100k elements client](100k_Client.png)
+_Fig.10_ : Passage à 100 000 éléments
+
+![Passage à 100k elements](100k_Backend.png)
+_Fig.11_ : Passage à 100 000 éléments
+
+### Prise en compte du passage à l'echelle
+
+Comme vous l'avez surement compris, pour réduire notre consommation de carbone, nous allons essayer de jouer sur le nombre de messages que nous chargons et allons réduire notre requête pour ne demander à la base de données qu'un nombre réduit de message. En effet, il n'est pas inhabituelle de consulter d'anciens messages, cependant ce n'est pas systématique. Nous allons donc faire le choix de ne charger par défaut que 20 messages.
+
+### Evolution de l'impact environnemental après correction
+
+Après cette correction, le resultat est mitigé. Nous avons bien réussi à réduire l'impact environnemental grâce à la pagination de nos résultats qui a réduit quelque peu l'impact à la fois coté client et coté serveur (Voir Fig.12), cependant nous sommes loin d'être revenu au point où nous étions avant le passage à l'echelle (Voir Fig.13).
+
+![Proto4 Overview](Screen_Prototype4_Overview.png)
+_Fig.12_ : Impact environnemental après correction
+
+![Graphique passsage à l'echelle](Graphique_Passage_Echelle.png)
+_Fig.13_ : Évolution de l'impact de l'application avec l'augmentation de la quantité de données puis sa prise en compte.
+
+### Perspectives
+
+Le problème n'ayant toujours pas été réglé pour rattrapper cette grande augmentation de l'impact, il faudrait limiter le nombre de message par personnes pour essayer de rester sous la barre des 100 000 messages et avoir notre application qui fonctionne correctement. Toutefois, le problème pourrait simplement provenir de la machine que j'utilise actuellement dont les capacités ne permettraient pas l'hébergement d'une si grande base de données, là où un serveur le pourrait. En admettant que ca soit le cas, nous allons envisager les potentielles fonctionnalités à implémenter à notre application ensuite : 
+- Ajouter un système de login,
+- Ajouter un bouton pour charger les messages plus anciens,
+- Ajouter le dernier messages sous le nom de l'interlocuteur et l'heure à laquelle il l'a envoyé dans la barre des discussions.
+
+## Bilan
+
+Au cours de ce semestre, nous avons travillé sur ce projet Familink qui s'est avéré plutôt complexe et nous pouvons constater que nous n'avons pu aborder qu'une petite partie de ce que représente une application de messagerie instantanée. Nous avons du faire face a plusieurs contre-temps en raison de la nature de notre projet (notamment la présence de login et parfois de captcha) pour accéder aux différentes applications déjà existantes rendant l'étude de celle-ci plus complexes voire parfois impossible. Cependant, nous avons pu acquérir des compétences à la fois en programmation mais surtout en analyse, permettant d'aborder avec un regard nouveau le développement d'applications web. Le suivi de cette UE nous a parfois réservé des surprises, comme l'importance de la consommation de l'écran qui s'avère être beaucoup plus importante que celle du CPU dont on à l'habitude d'entendre parler ou encore l'impact du nombre de requêtes sur la consommation de l'application.
+
